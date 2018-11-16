@@ -1,0 +1,120 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Amazon Price Scrapper
+  description: A simple server that scraps certain amazon products and stores the price for clients to visualize.
+        
+schemes:
+  - http
+  - https
+host: localhost:8080
+basePath: /
+
+paths:
+  /products:
+    get:
+      summary: A list of all the products stored.
+      description: Returns a list of all the products stored.
+      responses:
+        200:
+          description: A list of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          
+  /products/{objectid}:
+    get:
+      summary: Get a specific product by ID
+      description: Gets a specfic product info by ID
+      parameters:
+        - $ref: '#/parameters/objectid'
+      responses:
+        200:
+          description: Information about the game
+          schema:
+            $ref: '#/definitions/Product'
+        default:
+           description: Unexpected error
+           schema:
+              $ref: '#/definitions/Error'
+ 
+parameters:
+  objectid:
+    name: objectid
+    in: path
+    required: true
+    description: The game's name
+    type: string
+ 
+definitions:
+  Product: 
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      priceHistory:
+        type: array
+        items:
+          $ref: '#/definitions/PriceHistory'
+  PriceHistory:
+    type: object
+    properties:
+      price:
+        type: string
+      date:
+        type: integer
+        description: In epoch seconds
+  
+  Error:
+    type: object
+    properties:
+      context:
+        type: string
+        description: error context description -- using jsonld type errors
+        example:
+          http://www.w3.org/ns/hydra/context.jsonld
+      type:
+        type: string
+        description: indicates what the message type is
+        example:
+          Error
+      status:
+        type: string
+        description: String HTTP status code of the error
+        example:
+          500
+      statusCode:
+        type: integer
+        description: HTTP status code of the error
+        example:
+          500
+      errorCode:
+        type: integer
+        description: System error code for the error
+        example:
+          400
+      message:
+        type: string
+        description: Error Message
+        example:
+          Invalid Input
+      detail:
+        type: string
+        description: more details for the error -- potentially show the user
+        example:
+          Missing api key
+ 
+ 
+ 
+ 
+ 
+ 
+ 

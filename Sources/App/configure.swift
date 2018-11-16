@@ -1,10 +1,10 @@
-import FluentSQLite
 import Vapor
+import FluentPostgreSQL
 
 /// Called before your application initializes.
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
     /// Register providers first
-    try services.register(FluentSQLiteProvider())
+    try services.register(FluentPostgreSQLProvider())
 
     /// Register routes to the router
     let router = EngineRouter.default()
@@ -17,17 +17,25 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     services.register(middlewares)
 
-    // Configure a SQLite database
-    let sqlite = try SQLiteDatabase(storage: .memory)
-
-    /// Register the configured SQLite database to the database config.
+    // Configure a database
     var databases = DatabasesConfig()
-    databases.add(database: sqlite, as: .sqlite)
+
+    // Create database first
+    // if from brew, brew services start postgres
+    // create database: create database vapor
+    // create user (optional): create user someone
+    // list databases: \l
+    // See if database is running: lsof -i :5432
+    let databaseConfig = PostgreSQLDatabaseConfig(hostname: "localhost",
+                                                  username: "kirby",
+                                                  database: "vapor",
+                                                  password: nil)
+    let database = PostgreSQLDatabase(config: databaseConfig)
+    databases.add(database: database, as: .psql)
     services.register(databases)
-
-    /// Configure migrations
+    
     var migrations = MigrationConfig()
-    migrations.add(model: Todo.self, database: .sqlite)
-    services.register(migrations)
 
+    migrations.add(model: Product.self, database: .psql)
+    services.register(migrations)
 }
