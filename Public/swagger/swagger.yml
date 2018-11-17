@@ -27,7 +27,6 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-          
   /products/{objectid}:
     get:
       summary: Get a specific product by ID
@@ -43,6 +42,18 @@ paths:
            description: Unexpected error
            schema:
               $ref: '#/definitions/Error'
+    delete:
+      summary: Delete a specific product
+      responses:
+        200:
+          description: Details of the deleted product
+          schema:
+            $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          
  
 parameters:
   objectid:

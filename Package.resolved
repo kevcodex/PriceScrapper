@@ -65,6 +65,15 @@
         }
       },
       {
+        "package": "Kanna",
+        "repositoryURL": "https://github.com/tid-kijyun/Kanna.git",
+        "state": {
+          "branch": null,
+          "revision": "aec73a69619cf9bb540002a17793fb54633f372d",
+          "version": "4.0.2"
+        }
+      },
+      {
         "package": "Multipart",
         "repositoryURL": "https://github.com/vapor/multipart.git",
         "state": {
@@ -143,6 +152,24 @@
           "branch": null,
           "revision": "37760e9a52030bb9011972c5213c3350fa9d41fd",
           "version": "1.0.0"
+        }
+      },
+      {
+        "package": "SwiftClibxml2",
+        "repositoryURL": "https://github.com/tid-kijyun/SwiftClibxml2.git",
+        "state": {
+          "branch": null,
+          "revision": "c4e67cc970273fc2bee978d12e422974ff184de7",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "SwiftSoup",
+        "repositoryURL": "https://github.com/scinfu/SwiftSoup.git",
+        "state": {
+          "branch": null,
+          "revision": "11da8c685ddde2d519fad04a7daf8485bbbc773e",
+          "version": "1.7.5"
         }
       },
       {
