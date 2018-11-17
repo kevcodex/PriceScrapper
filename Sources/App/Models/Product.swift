@@ -3,12 +3,15 @@ import FluentPostgreSQL
 
 final class Product: Codable {
     var id: Int?
+    var asin: String
     var title: String
+    var url: String
     var priceHistory: [Event]
     
-    init(id: Int, title: String, priceHistory: [Event]) {
-        self.id = id
+    init(asin: String, title: String, url: String, priceHistory: [Event]) {
+        self.asin = asin
         self.title = title
+        self.url = url
         self.priceHistory = priceHistory
     }
 }

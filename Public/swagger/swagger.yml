@@ -71,6 +71,10 @@ definitions:
         type: integer
       title:
         type: string
+      url:
+        type: string
+      asin:
+        type: string
       priceHistory:
         type: array
         items:
