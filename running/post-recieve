@@ -1,7 +1,10 @@
 #!/bin/bash
 
+echo `date`
+echo "Wait for setup"
 sleep 5
 
+echo `date`
 echo "Pulling Latest"
 git fetch --all
 git pull
