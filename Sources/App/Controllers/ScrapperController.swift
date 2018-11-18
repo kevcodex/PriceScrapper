@@ -21,7 +21,7 @@ final class ScrapperController {
     }
     
     func start(interval: Double) {
-        CustomTimer.shared.startTimer(interval: interval) {
+        CustomTimer.shared.startTimer(interval: interval, initialFireDelay: 20.0) {
             
             for url in self.urls {
                 

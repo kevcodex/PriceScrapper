@@ -12,13 +12,13 @@ final class CustomTimer {
     
     private var timer: DispatchSourceTimer?
     
-    func startTimer(interval: Double, repeats: Bool = true, action: @escaping () -> Void) {
+    func startTimer(interval: Double, initialFireDelay: Double, repeats: Bool = true, action: @escaping () -> Void) {
         let queue = DispatchQueue(label: "com.domain.app.timer")
         
         stopTimer()
         
         timer = DispatchSource.makeTimerSource(queue: queue)
-        timer?.schedule(deadline: .now() + interval, repeating: interval, leeway: .seconds(0))
+        timer?.schedule(deadline: .now() + initialFireDelay, repeating: interval, leeway: .seconds(0))
         timer?.setEventHandler { [weak self] in
             action()
             if !repeats {

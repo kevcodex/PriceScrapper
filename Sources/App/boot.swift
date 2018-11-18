@@ -25,5 +25,5 @@ public func boot(_ app: Application) throws {
     }
     
     let test = ScrapperController(client: client, urls: urls)
-    test.start(interval: 10.0)
+    test.start(interval: 240.0)
 }
