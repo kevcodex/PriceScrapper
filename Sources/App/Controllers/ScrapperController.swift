@@ -30,24 +30,30 @@ final class ScrapperController {
                 futureResponse.do { (response) in
                     
                     switch response.http.status.code {
-                    case 400...499:
+                    case 400...:
                         return
                     default:
                         break
                     }
                     let string = response.http.body.description
                     
-                    let html = try! HTML(html: string, encoding: .utf8)
+                    guard let html = try? HTML(html: string, encoding: .utf8) else {
+                        return
+                    }
                     
                     let asin = url.pathComponents.safe(index: 3) ?? ""
                     let title = self.getFirstText(from: html, with: "//*[@id='productTitle']")?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                    let amazonPrice = self.getFirstText(from: html, with: "//*[@id = 'priceblock_ourprice']") ?? ""
                     
-                    let event = Event(price: amazonPrice, date: Int(Date().timeIntervalSince1970))
+                    let strikeThroughPrice = self.getFirstText(from: html, with: "//span[@class = 'a-text-strike']") ?? ""
+                    let amazonPrice = self.getFirstText(from: html, with: "//*[@id = 'priceblock_ourprice']") ?? ""
+                    let dealPrice = self.getFirstText(from: html, with: "//span[@id = 'priceblock_dealprice']") ?? ""
+                    
+                    let lowestPrice = self.lowestPrice(from: [strikeThroughPrice, amazonPrice, dealPrice])
+            
+                    let event = Event(price: lowestPrice, date: Int(Date().timeIntervalSince1970))
                     let product = Product(asin: asin, title: title, url: urlString, priceHistory: [event])
                     
                     let request = response.makeRequest()
-                    
                     
                     let futureFoundProduct = Product.query(on: request).filter(\.asin == asin).first()
                     futureFoundProduct.do({ (foundProduct) in
@@ -70,6 +76,20 @@ final class ScrapperController {
                         print(error)
                 }
             }
+        }
+    }
+    
+    /// Get the lowest price from a list of string array with format $4.99
+    private func lowestPrice(from stringArray: [String]) -> String {
+        
+        let nonEmptyArray = stringArray.filter { !$0.isEmpty }
+        
+        let arrayAsDouble = nonEmptyArray.compactMap { Double($0.replacingOccurrences(of: "$", with: "")) }
+        
+        if let minValue = arrayAsDouble.min() {
+            return String(minValue)
+        } else {
+            return ""
         }
     }
     
