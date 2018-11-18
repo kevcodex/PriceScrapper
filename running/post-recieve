@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sleep 5
+
+echo "Pulling Latest"
+git fetch --all
+git pull
+
+echo `date`
+echo "BUILDING"
+swift build -c release
+
+echo `date`
+echo "RUNNING"
+.build/release/Run --port 8090
