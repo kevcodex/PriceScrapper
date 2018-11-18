@@ -8,7 +8,7 @@ pipeline {
                         label 'master'
                     }
                     environment {
-                        PATH = '/home/kirby/bin:/home/kirby/.local/bin:/home/kirby/swift-4.2.1-RELEASE-ubuntu16.04/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+                        PATH = '/home/kirby/bin:/home/kirby/.local/bin:/home/kirby/swift/swift-4.2.1-RELEASE-ubuntu16.04/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
                     }
                     stages {
                         stage('Update Package') {
