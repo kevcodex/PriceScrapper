@@ -9,6 +9,7 @@ import Vapor
 import Kanna
 import Fluent
 
+// Convert to provider?
 final class ScrapperController {
     
     let client: Client

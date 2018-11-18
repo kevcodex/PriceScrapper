@@ -19,6 +19,7 @@ final class Product: Codable {
 extension Product: PostgreSQLModel {}
 extension Product: Migration {}
 extension Product: Content {}
+extension Product: Parameter {}
 
 final class Event: Codable {
     var price: String

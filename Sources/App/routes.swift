@@ -7,11 +7,6 @@ public func routes(_ router: Router) throws {
         return "It works!"
     }
     
-    // Basic "Hello, world!" example
-    router.get("hello") { req in
-        return "Hello, world!"
-    }
-    
     router.post("products") { req -> Future<Product> in
         
         return try req.content.decode(Product.self).flatMap(to: Product.self) { product in
@@ -36,5 +31,13 @@ public func routes(_ router: Router) throws {
     
     router.get("products") { req in
         return Product.query(on: req).all()
+    }
+    
+    router.get("products", Product.parameter) { req in
+        return try req.parameters.next(Product.self)
+    }
+    
+    router.delete("products", Product.parameter) { req in
+        return try req.parameters.next(Product.self).delete(on: req).transform(to: HTTPStatus.noContent)
     }
 }
