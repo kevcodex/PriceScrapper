@@ -38,7 +38,7 @@ pipeline {
                     }
                     post {
                         success {
-                            junit 'build/reports/junit.xml'
+                            junit 'Server/build/reports/junit.xml'
                         }
                     }
                     stages {
