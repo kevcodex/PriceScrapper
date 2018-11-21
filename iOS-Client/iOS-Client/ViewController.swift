@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import MiniNe
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let client = MiniNeClient()
+        let request = ProductRequest()
+        
+        client.send(request: request) { (result) in
+            switch result {
+            case .success(let response):
+                
+                do {
+                    let productsResponse = try JSONDecoder().decode([Product].self, from: response.data)
+                    
+                    print(productsResponse)
+                } catch {
+                    print(error)
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-
-
 }
-
