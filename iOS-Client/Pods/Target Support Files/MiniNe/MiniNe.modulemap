@@ -1,0 +1,6 @@
+framework module MiniNe {
+  umbrella header "MiniNe-umbrella.h"
+
+  export *
+  module * { export * }
+}
