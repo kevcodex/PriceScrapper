@@ -1,0 +1,16 @@
+PODS:
+  - MiniNe (1.2.1)
+
+DEPENDENCIES:
+  - MiniNe (= 1.2.1)
+
+SPEC REPOS:
+  https://github.com/kevcodex/kevcodex-podspecs.git:
+    - MiniNe
+
+SPEC CHECKSUMS:
+  MiniNe: 0bff59829d6edd04d9634c623e7c3fcf017d8e74
+
+PODFILE CHECKSUM: 0186ce1feeded40d1e5df28d80b8b06228928487
+
+COCOAPODS: 1.5.3

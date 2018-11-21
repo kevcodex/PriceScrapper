@@ -9,6 +9,8 @@ echo "Pulling Latest"
 git fetch --all
 git pull
 
+cd Server
+
 echo `date`
 echo "BUILDING"
 swift build -c release
