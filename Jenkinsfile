@@ -13,18 +13,18 @@ pipeline {
                     stages {
                         stage('Update Package') {
                             steps {
-                                sh 'swift package update'
+                                sh 'cd Server; swift package update'
                             }
                         }
                         stage('Build') {
                             steps {
-                                sh 'swift package clean'
-                                sh 'swift build'
+                                sh 'cd Server; swift package clean'
+                                sh 'cd Server; swift build'
                             }
                         }
                         stage('Test') {
                             steps {
-                                sh 'swift test'
+                                sh 'cd Server; swift test'
                             }
                         }
                     }
@@ -44,17 +44,17 @@ pipeline {
                     stages {
                         stage('Update Package') {
                             steps {
-                                sh 'swift package update'
+                                sh 'cd Server; swift package update'
                             }
                         }
                         stage("Swift Build") {
                             steps {
-                                sh 'swift build'
+                                sh 'cd Server; swift build'
                             }
                         }
                         stage('Mac Generate Xcode') {
                             steps {
-                                sh 'swift package generate-xcodeproj'
+                                sh 'cd Server; swift package generate-xcodeproj'
                             }
                         }
                         stage('Build and Test') {
@@ -66,6 +66,7 @@ pipeline {
                                     ).trim()
                                 }
                                 sh """
+                                cd Server; \
                                 xcodebuild \
                                 -project ${ xcodeproj } \
                                 -scheme Run \
