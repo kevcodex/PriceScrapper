@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Server/AmazonPriceScraper.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:iOS-Client.xcodeproj">
    </FileRef>
    <FileRef
