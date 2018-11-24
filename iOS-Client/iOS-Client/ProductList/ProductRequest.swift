@@ -11,7 +11,12 @@ import MiniNe
 
 struct ProductRequest: NetworkRequest {
     var baseURL: URL? {
-        return URL(string: "https://edge.kevcodex.com")
+        
+        guard let baseURLString = App.APIBaseURL else {
+            return nil
+        }
+        
+        return URL(string: baseURLString)
     }
     
     var path: String {

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ProductListViewController.swift
 //  iOS-Client
 //
 //  Created by Kevin Chen on 11/21/18.
@@ -9,7 +9,7 @@
 import UIKit
 import MiniNe
 
-class ViewController: UIViewController {
+class ProductListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,5 +33,11 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
+    }
+}
+
+extension ProductListViewController: StoryboardInitializable {
+    static var storyboardName: String {
+        return "Main"
     }
 }
