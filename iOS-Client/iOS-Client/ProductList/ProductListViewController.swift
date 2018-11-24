@@ -10,9 +10,14 @@ import UIKit
 import MiniNe
 
 class ProductListViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let client = MiniNeClient()
         let request = ProductRequest()
@@ -34,6 +39,20 @@ class ProductListViewController: UIViewController {
             }
         }
     }
+}
+
+extension ProductListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+extension ProductListViewController: UITableViewDelegate {
+    
 }
 
 extension ProductListViewController: StoryboardInitializable {

@@ -23,7 +23,7 @@ final class AppCoordinator {
     
     func start() {
         // Launch initial vc
-        let viewController = ListViewController.makeFromStoryboard()
+        let viewController = ProductListViewController.makeFromStoryboard()
         
         navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
