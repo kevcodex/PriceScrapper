@@ -1,9 +1,9 @@
 //
 //  StoryboardInitializable.swift
-//  FOXNOW
+//  iOS-Client
 //
-//  Created by Alejandro Cárdenas on 9/8/17.
-//
+//  Created by Kirby on 11/25/18.
+//  Copyright © 2018 Kevin Chen. All rights reserved.
 //
 
 import UIKit
@@ -31,7 +31,8 @@ extension StoryboardInitializable {
         guard let viewController = storyboard.instantiateViewController(withIdentifier: storyboardIdentifier) as? Self else {
             fatalError("No view controller with identifier \(storyboardIdentifier) in storyboard")
         }
-
+        
         return viewController
     }
 }
+
