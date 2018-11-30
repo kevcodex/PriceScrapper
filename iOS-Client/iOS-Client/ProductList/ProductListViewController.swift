@@ -13,6 +13,8 @@ class ProductListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var products: [Product] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +31,11 @@ class ProductListViewController: UIViewController {
                 do {
                     let productsResponse = try JSONDecoder().decode([Product].self, from: response.data)
                     
-                    print(productsResponse)
+                    self.products = productsResponse
+                    
+                    Thread.performOnMain {
+                        self.tableView.reloadData()
+                    }
                 } catch {
                     print(error)
                 }
@@ -41,16 +47,26 @@ class ProductListViewController: UIViewController {
     }
 }
 
+// MARK: - Table View DataSource
 extension ProductListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListViewCell", for: indexPath) as? ProductListViewCell else {
+            
+            return UITableViewCell()
+        }
+        
+        cell.title.text = products[indexPath.row].title
+        
+        return cell
     }
 }
 
+// MARK: - Table View Delegate
 extension ProductListViewController: UITableViewDelegate {
     
 }

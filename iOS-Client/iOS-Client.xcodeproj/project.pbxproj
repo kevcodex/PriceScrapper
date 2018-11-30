@@ -18,6 +18,8 @@
 		0AA15AA621A5F0E200516E36 /* ProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA15AA521A5F0E200516E36 /* ProductRequest.swift */; };
 		34AD0E2D730F4D4E70C463EA /* Pods_iOS_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E863952594E5110E723D6E /* Pods_iOS_Client.framework */; };
 		4E3135C721ABD1C800AA9EF7 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3135C621ABD1C800AA9EF7 /* StoryboardInitializable.swift */; };
+		4E31380021B10E7E00AA9EF7 /* ProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3137FF21B10E7E00AA9EF7 /* ProductListViewCell.swift */; };
+		4E31380221B1157600AA9EF7 /* Thread+PerformOnMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31380121B1157600AA9EF7 /* Thread+PerformOnMain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		0AA15AA521A5F0E200516E36 /* ProductRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRequest.swift; sourceTree = "<group>"; };
 		46E863952594E5110E723D6E /* Pods_iOS_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3135C621ABD1C800AA9EF7 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
+		4E3137FF21B10E7E00AA9EF7 /* ProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewCell.swift; sourceTree = "<group>"; };
+		4E31380121B1157600AA9EF7 /* Thread+PerformOnMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+PerformOnMain.swift"; sourceTree = "<group>"; };
 		72B152AB1A570B950EE887F2 /* Pods-iOS-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Client/Pods-iOS-Client.debug.xcconfig"; sourceTree = "<group>"; };
 		E74CCFD5A94E6402AAFB0140 /* Pods-iOS-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Client.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Client/Pods-iOS-Client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				0AA15A9321A5E89B00516E36 /* ProductListViewController.swift */,
+				4E3137FF21B10E7E00AA9EF7 /* ProductListViewCell.swift */,
 				0AA15AA321A5F0CC00516E36 /* Product.swift */,
 				0AA15AA521A5F0E200516E36 /* ProductRequest.swift */,
 			);
@@ -102,6 +107,7 @@
 				0A2132E321A8D71D009D15E1 /* App */,
 				0A2132E421A8D7FA009D15E1 /* ProductList */,
 				0A2132E021A8D4E4009D15E1 /* Utilities */,
+				4E31380321B1158100AA9EF7 /* Extensions */,
 				0AA15A9521A5E89B00516E36 /* Main.storyboard */,
 				0AA15A9821A5E89C00516E36 /* Assets.xcassets */,
 				0AA15A9A21A5E89C00516E36 /* LaunchScreen.storyboard */,
@@ -117,6 +123,14 @@
 				E74CCFD5A94E6402AAFB0140 /* Pods-iOS-Client.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4E31380321B1158100AA9EF7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4E31380121B1157600AA9EF7 /* Thread+PerformOnMain.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		99C19A2A8341F00A7BFA472C /* Frameworks */ = {
@@ -252,6 +266,8 @@
 				4E3135C721ABD1C800AA9EF7 /* StoryboardInitializable.swift in Sources */,
 				0A2132DD21A8D240009D15E1 /* AppCoordinator.swift in Sources */,
 				0AA15A9221A5E89B00516E36 /* AppDelegate.swift in Sources */,
+				4E31380021B10E7E00AA9EF7 /* ProductListViewCell.swift in Sources */,
+				4E31380221B1157600AA9EF7 /* Thread+PerformOnMain.swift in Sources */,
 				0A2132E221A8D500009D15E1 /* App.swift in Sources */,
 				0AA15AA421A5F0CC00516E36 /* Product.swift in Sources */,
 			);
