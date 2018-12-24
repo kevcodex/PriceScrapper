@@ -22,7 +22,7 @@ extension Collection {
     ///
     /// - Parameter index: Index of element in a collection.
     /// - Returns: Element at a given index. If an index is out of boundary of a collection it will return nil and an assertionFailure.
-    func safe(index: Index) -> Iterator.Element? {
+    public func safe(index: Index) -> Iterator.Element? {
         return self[safe: index]
     }
 }

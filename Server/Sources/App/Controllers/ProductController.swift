@@ -1,4 +1,5 @@
 import Vapor
+import Common
 
 struct ProductController: RouteCollection {
     func boot(router: Router) throws {

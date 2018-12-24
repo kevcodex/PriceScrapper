@@ -7,12 +7,12 @@
 
 import Dispatch
 
-final class CustomTimer {
-    static let shared = CustomTimer()
+public final class CustomTimer {
+    public static let shared = CustomTimer()
     
     private var timer: DispatchSourceTimer?
     
-    func startTimer(interval: Double, initialFireDelay: Double, repeats: Bool = true, action: @escaping () -> Void) {
+    public func startTimer(interval: Double, initialFireDelay: Double, repeats: Bool = true, action: @escaping () -> Void) {
         let queue = DispatchQueue(label: "com.domain.app.timer")
         
         stopTimer()
@@ -28,7 +28,7 @@ final class CustomTimer {
         timer?.resume()
     }
     
-    func stopTimer() {
+    public func stopTimer() {
         timer?.cancel()
         timer = nil
     }

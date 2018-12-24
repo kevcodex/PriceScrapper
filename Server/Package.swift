@@ -11,8 +11,10 @@ let package = Package(
         .package(url: "https://github.com/tid-kijyun/Kanna.git", from: "4.0.0"),
     ],
     targets: [
-        .target(name: "App", dependencies: ["FluentPostgreSQL", "Vapor", "Kanna"]),
+        .target(name: "Common", dependencies: ["FluentPostgreSQL", "Vapor"]),
+        .target(name: "App", dependencies: ["FluentPostgreSQL", "Vapor", "Kanna", "Common"]),
         .target(name: "Run", dependencies: ["App"]),
+        .target(name: "Script", dependencies: ["FluentPostgreSQL", "Kanna", "Common"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
 )

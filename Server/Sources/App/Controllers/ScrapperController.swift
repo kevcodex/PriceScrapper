@@ -8,6 +8,7 @@
 import Vapor
 import Kanna
 import Fluent
+import Common
 
 // Convert to provider?
 final class ScrapperController {
