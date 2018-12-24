@@ -12,10 +12,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "Common", dependencies: ["FluentPostgreSQL", "Vapor"]),
-        .target(name: "App", dependencies: ["FluentPostgreSQL", "Vapor", "Kanna", "Common"]),
-        .target(name: "Run", dependencies: ["App"]),
-        .target(name: "Script", dependencies: ["FluentPostgreSQL", "Kanna", "Common"]),
-        .testTarget(name: "AppTests", dependencies: ["App"])
+        .target(name: "ServerApp", dependencies: ["FluentPostgreSQL", "Vapor", "Kanna", "Common"]),
+        .target(name: "ServerRun", dependencies: ["ServerApp"]),
+        .target(name: "ScriptRun", dependencies: ["FluentPostgreSQL", "Kanna", "Common"]),
+        .testTarget(name: "ServerAppTests", dependencies: ["ServerApp"])
     ]
 )
 
