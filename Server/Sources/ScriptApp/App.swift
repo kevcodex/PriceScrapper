@@ -9,6 +9,8 @@ import Common
 import Fluent
 import FluentPostgreSQL
 
+
+
 public class App {
     
     public static func run() throws {
@@ -33,5 +35,17 @@ public class App {
         print(blah.first?.asin)
         
         try worker.syncShutdownGracefully()
+
+        let request1 = AmazonRequest(baseURL: URL(string: "https://www.amazon.com"), path: "/Rosewill-Computer-Tempered-Liquid-Cooling-Pre-Installed/dp/B01M6TV6PC")
+        
+        let request2 = AmazonRequest(baseURL: URL(string: "https://www.amazon.com"), path: "/Samsung-Inch-Internal-MZ-76E1T0B-AM/dp/B078DPCY3T")
+        
+        let request3 = AmazonRequest(baseURL: URL(string: "https://www.amazon.com"), path: "/GIGABYTE-Z370-AORUS-Gaming-Motherboard/dp/B075KFX627")
+        
+        let controller = ScrapperController(requests: [request1, request2, request3])
+        
+        let products = controller.retrieveProductsInfo()
+        print(products)
+        print("dawdw")
     }
 }

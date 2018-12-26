@@ -9,13 +9,15 @@ let package = Package(
 
         .package(url: "https://github.com/vapor/fluent-postgresql.git", from: "1.0.0"),
         .package(url: "https://github.com/tid-kijyun/Kanna.git", from: "4.0.0"),
+        .package(url: "https://github.com/kevcodex/MiniNe", from: "1.0.0"),
+        .package(url: "https://github.com/kevcodex/ScriptHelpers", from: "1.0.0")
     ],
     targets: [
         .target(name: "Common", dependencies: ["FluentPostgreSQL", "Vapor"]),
         .target(name: "ServerRun", dependencies: ["ServerApp"]),
         .target(name: "ServerApp", dependencies: ["FluentPostgreSQL", "Vapor", "Kanna", "Common"]),
         .target(name: "ScriptRun", dependencies: ["ScriptApp"]),
-        .target(name: "ScriptApp", dependencies: ["FluentPostgreSQL", "Kanna", "Common"]),
+        .target(name: "ScriptApp", dependencies: ["FluentPostgreSQL", "Kanna", "Common", "MiniNe", "ScriptHelpers"]),
         .testTarget(name: "ServerAppTests", dependencies: ["ServerApp"])
     ]
 )
