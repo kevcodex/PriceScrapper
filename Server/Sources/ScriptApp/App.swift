@@ -22,7 +22,7 @@ public class App {
         let database = PostgreSQLDatabase(config: databaseConfig)
         
         
-        let worker = MultiThreadedEventLoopGroup(numberOfThreads: 2)
+        let worker = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
         
         let connection = database.newConnection(on: worker)
         
